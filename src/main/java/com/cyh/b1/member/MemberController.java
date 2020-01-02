@@ -1,5 +1,7 @@
 package com.cyh.b1.member;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +32,43 @@ public class MemberController {
 			
 			String msg="join실패";
 			String path="../";//루트밑
-			if(result>1) {
+			if(result>0) {
 				msg="Join Success";
 			}
-			mv.addObject(path, path);
-			mv.addObject(msg, msg);
+			mv.addObject("path", path);
+			mv.addObject("msg", msg);
 			mv.setViewName("common/result");
 			
+			return mv;
+			
+			
+		}
+		
+		@GetMapping("memberLogin")
+		public void memberLogin()throws Exception {
+			
+			
+		}
+		
+		@PostMapping("memberLogin")
+		public ModelAndView memberLogin(MemberVO memberVO , HttpSession session)throws Exception {
+			
+			memberVO= memberService.memberLogin(memberVO);
+			
+			ModelAndView mv = new ModelAndView();
+			
+			String msg = "로그인 실패";
+			
+			if(memberVO != null){
+				session.setAttribute("member", memberVO);
+				mv.setViewName("redirect:../");
+			}else {
+				
+				mv.addObject("msg", msg);
+				mv.addObject("path", "../");
+				mv.setViewName("common/result");
+				
+			}
 			return mv;
 			
 			

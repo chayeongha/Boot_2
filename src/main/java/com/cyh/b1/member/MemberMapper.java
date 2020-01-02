@@ -9,5 +9,5 @@ public interface MemberMapper {
 
 	public int memberJoin(MemberVO memberVO)throws Exception;
 	
-	
+	public MemberVO memberLogin(MemberVO memberVO)throws Exception;
 }

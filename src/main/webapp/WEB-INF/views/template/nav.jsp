@@ -16,7 +16,7 @@
         </ul>
       </li>
       <li><a href="${pageContext.request.contextPath}/member/memberJoin">memberJoin</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="${pageContext.request.contextPath}/member/memberLogin">memberLogin</a></li>
     </ul>
   </div>
 </nav>

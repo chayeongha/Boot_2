@@ -7,4 +7,5 @@ public interface MemberFilesMapper {
 
 	public int memberFilesInsert(MemberFilesVO memberFilesVO)throws Exception;
 	
+	
 }

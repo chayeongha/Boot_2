@@ -50,5 +50,9 @@ public class MemberService {
 		return result; //memberMapper.memberJoin(memberVO);
 	}
 	
+	public MemberVO memberLogin(MemberVO memberVO)throws Exception {
+		
+		return memberMapper.memberLogin(memberVO);
+	}
 
 }

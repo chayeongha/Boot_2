@@ -18,6 +18,33 @@ public class MemberController {
 		@Autowired
 		private MemberService memberService;
 		
+		
+		
+		
+		
+		
+		@GetMapping("memberFileDown")
+		public ModelAndView memberFileDown(MemberFilesVO memberFilesVO)throws Exception{
+			ModelAndView mv= new ModelAndView();
+			
+			memberFilesVO=memberService.memberFilesSelect(memberFilesVO);
+		
+			if(memberFilesVO != null) {
+				mv.addObject("memberFiles", memberFilesVO);
+				mv.addObject("path", "upload");
+				mv.setViewName("fileDown");
+				
+			}else {
+				mv.addObject("msg", "이미지가없어용");
+				mv.addObject("path", "./memberPage");
+				mv.setViewName("common/result");
+			}
+			
+			return mv;
+		}
+		
+		
+		//회원가입
 		@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 		public String memberJoin()throws Exception {
 		
@@ -44,6 +71,7 @@ public class MemberController {
 			
 		}
 		
+		//로그인
 		@GetMapping("memberLogin")
 		public void memberLogin()throws Exception {
 			
@@ -51,27 +79,37 @@ public class MemberController {
 		}
 		
 		@PostMapping("memberLogin")
-		public ModelAndView memberLogin(MemberVO memberVO , HttpSession session)throws Exception {
+		public ModelAndView memberLogin(MemberVO memberVO,HttpSession session)throws Exception {
+			ModelAndView mv = new ModelAndView();
 			
 			memberVO= memberService.memberLogin(memberVO);
 			
-			ModelAndView mv = new ModelAndView();
 			
 			String msg = "로그인 실패";
 			
+			
 			if(memberVO != null){
+				msg= "로그인 성공";
 				session.setAttribute("member", memberVO);
-				mv.setViewName("redirect:../");
-			}else {
-				
-				mv.addObject("msg", msg);
-				mv.addObject("path", "../");
-				mv.setViewName("common/result");
 				
 			}
+			
+			mv.addObject("msg", msg);
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
+			
 			return mv;
 			
 			
 		}
+		
+		//마이페이지
+		@GetMapping("memberPage")
+		public void memberPage()throws Exception {
+			
+			
+		}
+		
+		
 		
 }

@@ -14,7 +14,7 @@
 
 <div class="container">
   <h2>memberLogin</h2>
-  <form action="./memberLogin">
+  <form action="./memberLogin" method="post">
     <div class="form-group">
       <label for="id">id:</label>
       <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">

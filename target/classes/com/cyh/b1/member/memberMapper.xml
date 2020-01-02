@@ -9,11 +9,28 @@
  		insert into members values(#{id},#{pw},#{name},#{email})
  	</insert> 
  
- 	<select id="memberLogin" parameterType="com.cyh.b1.member.MemberVO" resultType="com.cyh.b1.member.MemberVO">
-    		select * from members where id=#{id} and pw=#{pw}
+ 	<resultMap type="com.cyh.b1.member.MemberVO" id="Login">
+  		<id column="id" property="id"/>
+  		<result column="pw" property="pw"/>
+  		<result column="name" property="name"/>
+  		<result column="email" property="email"/>
+  		<association property="memberFilesVO" javaType="com.cyh.b1.member.MemberFilesVO">
+  			<id column="fnum" property="fnum"/>
+  			<result column="fname" property="fname"/>
+  			<result column="oname" property="oname"/>
+  		</association>
+  	
+  	</resultMap>
+  	
+  	<select id="memberLogin" parameterType="com.cyh.b1.member.MemberVO" resultMap="Login">
+  		select M.*, F.* 
+  		from members M inner join memberFiles F
+  		on M.id = F.id 
+  		where M.id=#{id} and M.pw=#{pw}
+  	</select>
     
     
-    </select>
+  
  	
  
   </mapper>

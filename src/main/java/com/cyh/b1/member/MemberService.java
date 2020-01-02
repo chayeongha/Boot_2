@@ -6,12 +6,14 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cyh.b1.util.FilePathGenerator;
 import com.cyh.b1.util.FileSaver;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class MemberService {
 
 	
@@ -27,6 +29,14 @@ public class MemberService {
 	
 	@Autowired
 	private FileSaver fileSaver;
+	
+	
+	
+	public MemberFilesVO memberFilesSelect(MemberFilesVO memberFilesVO)throws Exception {
+		
+		return memberFilesMapper.memberFilesSelect(memberFilesVO);
+	}
+	
 	
 	public int memberJoin(MemberVO memberVO, MultipartFile files)throws Exception {
 		

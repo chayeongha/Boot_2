@@ -12,5 +12,9 @@
  	
  	</insert>
  
+ 
+ 	<select id="memberFilesSelect" parameterType="com.cyh.b1.member.MemberFilesVO" resultType="com.cyh.b1.member.MemberFilesVO">
+ 			select * from memberFiles where fnum= #{fnum}
+ 	</select>
   </mapper>
   

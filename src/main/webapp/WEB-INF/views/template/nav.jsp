@@ -15,6 +15,8 @@
           <li><a href="#">Page 1-3</a></li>
         </ul>
       </li>
+       <li><a href="${pageContext.request.contextPath}/member/memberPage">mypage</a></li>
+      <li><a href="${pageContext.request.contextPath}/member/memberLogout">memberLogout</a></li>
       <li><a href="${pageContext.request.contextPath}/member/memberJoin">memberJoin</a></li>
       <li><a href="${pageContext.request.contextPath}/member/memberLogin">memberLogin</a></li>
     </ul>

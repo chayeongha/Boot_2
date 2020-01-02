@@ -14,6 +14,10 @@ import com.cyh.b1.util.FileSaver;
 @Service
 public class MemberService {
 
+	
+	@Autowired
+	private MemberFilesMapper memberFilesMapper;
+	
 	@Autowired
 	private MemberMapper memberMapper;
 	//@Autowired
@@ -35,8 +39,15 @@ public class MemberService {
 		String fileName=fileSaver.save(file, files);
 		
 		System.out.println(fileName);
+		int result = memberMapper.memberJoin(memberVO);
+		 
+		MemberFilesVO memberFilesVO= new MemberFilesVO();
+		memberFilesVO.setId(memberVO.getId());
+		memberFilesVO.setFname(fileName);
+		memberFilesVO.setOname(files.getOriginalFilename());
 		
-		return 0; //memberMapper.memberJoin(memberVO);
+	    result =memberFilesMapper.memberFilesInsert(memberFilesVO);
+		return result; //memberMapper.memberJoin(memberVO);
 	}
 	
 

@@ -6,6 +6,7 @@ public class MemberVO {
 	private String pw;
 	private String name;
 	private String email;
+
 	
 	public String getId() {
 		return id;

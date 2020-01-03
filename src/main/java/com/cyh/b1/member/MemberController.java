@@ -110,6 +110,14 @@ public class MemberController {
 			
 		}
 		
+		@GetMapping("memberLogout")
+		public ModelAndView memberLogOut(MemberVO memberVO, ModelAndView mv, HttpSession session) throws Exception{
+			session.invalidate();
+			mv.addObject("msg", "로그아웃 되었습니다.");
+			mv.addObject("path", "../");
+			mv.setViewName("common/result");
+			return mv;
+		}
 		
 		
 }

@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,52 +17,49 @@
 
 	<div class="container">
 		<h2>MemberJoin</h2>
-		<form action="./memberJoin" method="post" enctype="multipart/form-data">
+
+		<form:form action="./memberJoin" modelAttribute="memberVO"  method="post" enctype="multipart/form-data">
 		
-			<div class="form-group">
+			<div class="form-group">		
 				<label for="id">id:</label> 
-				<input type="text"
-					class="form-control" id="id" placeholder="Enter id"
-					name="id">
+				<form:input path="id" placeholder="Enter id" class="form-control" id="id"/>
+				<form:errors path="id" cssStyle="color:red;" />
+				
 			</div>
 			
 			<div class="form-group">
 				<label for="pw">Password:</label> 
-				<input type="password"
-					class="form-control" id="pw" placeholder="Enter password"
-					name="pw">
+				<form:password path="pw" class="form-control" id="pw" placeholder="Enter password"/>
+				<form:errors path="pw" cssStyle="color:red;"/>
 			</div>
 			
 			<div class="form-group">
 				<label for="pw2">Password:</label> 
-				<input type="password"
-					class="form-control" id="pw2" placeholder="Enter password"
-					name="pw2">
+				<form:password path="pw2" class="form-control" id="pw2" placeholder="Enter password"/>
+				<form:errors path="pw2" cssStyle="color:red;" />
 			</div>
 			
 			<div class="form-group">
-				<label for="name">name:</label> 
-				<input type="text"
-					class="form-control" id="name" placeholder="Enter name"
-					name="name">
+				<label for="name">name:</label>
+				<form:input path="name" class="form-control" id="name" placeholder="Enter name"  /> 
 			</div>
 			
 			<div class="form-group">
 				<label for="email">email:</label> 
-				<input type="email"
-					class="form-control" id="email" placeholder="Enter eamil"
-					name="email">
+				<form:input path="email" class="form-control" id="email" placeholder="Enter eamil" />
+				
 			</div>
 			
 			<div class="form-group">
 				<label for="files">files:</label> 
-				<input type="file"
-					class="form-control" id="files" name="files">
+				<input type="file"class="form-control" id="files" name="files">
 			</div>
-			
 		
 			<button type="submit" class="btn btn-default">Submit</button>
-		</form>
+		
+		</form:form>
+			
+		
 	</div>
 
 

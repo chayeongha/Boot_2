@@ -29,7 +29,10 @@
   		where M.id=#{id} and M.pw=#{pw}
   	</select>
     
-    
+    <!-- 아이디 중복 체크  -->
+    <select id="memberIdCheck" parameterType="com.cyh.b1.member.MemberVO" resultType="com.cyh.b1.member.MemberVO">
+		select id from members where id=#{id}    
+    </select>
     
   
   

@@ -7,7 +7,13 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface MemberMapper {
 
+	//회원가입
 	public int memberJoin(MemberVO memberVO)throws Exception;
 	
+	//로그인
 	public MemberVO memberLogin(MemberVO memberVO)throws Exception;
+	
+	//아이디 중복체크
+	public MemberVO memberIdCheck(MemberVO memberVO)throws Exception;
+	
 }

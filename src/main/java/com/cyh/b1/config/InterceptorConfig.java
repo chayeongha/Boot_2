@@ -11,14 +11,11 @@ import com.cyh.b1.Interceptor.MemberInterceptor;
 @Configuration//xml									//add interceptor라는 메서드가 여기안에있음
 public class InterceptorConfig implements WebMvcConfigurer{
 
-
 	@Autowired
 	private Customlnterceptor customlnterceptor;
 	
 	@Autowired
 	private MemberInterceptor memberInterceptor;
-	
-	
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {

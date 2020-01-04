@@ -8,7 +8,7 @@
  <!--id : memberFilesInsert  -->
  	
  	<insert id="memberFilesInsert" parameterType="com.cyh.b1.member.MemberFilesVO">
- 		insert into memberFiles values(#{id},#{fname},#{oname},null)
+ 		insert into memberFiles values(null,#{id},#{fname},#{oname})
  	
  	</insert>
  

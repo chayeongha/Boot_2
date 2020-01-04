@@ -14,7 +14,7 @@ public class MemberVO {
 	
 	//@NotEmpty
 	@Size(min = 4, max = 10)
-	//@Pattern(regexp ="[0-9]+")
+	@Pattern(regexp ="[0-9]+")
 	private String pw;
 
 	private String pw2;

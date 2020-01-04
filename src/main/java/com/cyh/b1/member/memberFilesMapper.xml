@@ -5,13 +5,10 @@
   
   <mapper namespace="com.cyh.b1.member.MemberFilesMapper">
   
- <!--id : memberFilesInsert  -->
- 	
  	<insert id="memberFilesInsert" parameterType="com.cyh.b1.member.MemberFilesVO">
  		insert into memberFiles values(null,#{id},#{fname},#{oname})
  	
  	</insert>
- 
  
  	<select id="memberFilesSelect" parameterType="com.cyh.b1.member.MemberFilesVO" resultType="com.cyh.b1.member.MemberFilesVO">
  			select * from memberFiles where fnum= #{fnum}

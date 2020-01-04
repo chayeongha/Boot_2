@@ -69,7 +69,7 @@ public class MemberService {
 		return memberFilesMapper.memberFilesSelect(memberFilesVO);
 	}
 	
-	
+	//회원가입
 	public int memberJoin(MemberVO memberVO, MultipartFile files)throws Exception {
 		
 		//String filePath =servletContext.getRealPath("upload");
@@ -92,6 +92,7 @@ public class MemberService {
 		return result; //memberMapper.memberJoin(memberVO);
 	}
 	
+	//로그인
 	public MemberVO memberLogin(MemberVO memberVO)throws Exception {
 		
 		return memberMapper.memberLogin(memberVO);

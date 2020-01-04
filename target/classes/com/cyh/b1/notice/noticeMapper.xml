@@ -5,7 +5,11 @@
   
   <mapper namespace="com.cyh.b1.notice.NoticeMapper">
   
-  
+  	<!-- 공지글쓰기  --> 
+  	<insert id="noticeWrite" parameterType="com.cyh.b1.notice.NoticeVO">
+  		insert into notice values(null,#{title}, #{writer}, #{contents}, now(),0 )
+  			
+  	</insert>
   
   
   

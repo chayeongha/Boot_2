@@ -15,12 +15,12 @@ public class CustumAOP {
 															//가로안에 점이 1개있음 매개변수 한개, .. 이면 몇개든 상관없음.
 	@Before("execution(* com.cyh.b1.member.MemberService.memberLogin(..))")
 	public void before()throws Exception{
-		 System.out.println("Before Member Join");
+		 System.out.println("로그인 시도");
 	}
 	
 	@After("execution(* com.cyh.b1.member.MemberService.memberLogin(..))")
 	public void afterReturning()throws Exception {
-		System.out.println("after returning");
+		System.out.println("로그인 성공");
 		
 	}
 	

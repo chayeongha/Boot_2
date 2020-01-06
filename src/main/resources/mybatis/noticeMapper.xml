@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.cyh.b1.board.NoticeMapper">
+  
+
+  <resultMap type="com.cyh.b1.board.NoticeVO" id="selectResult">
+		<id column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="regDate" property="regDate"/>
+		<result column="hit" property="hit"/>
+		<collection property="noticeFiles" javaType="java.util.ArrayList" ofType="com.cyh.b1.board.NoticeFilesVO">
+			<id column="fnum" property="fnum"/>
+			<result column="num" property="num"/>
+			<result column="fname" property="fname"/>
+			<result column="oname" property="oname"/>
+		
+		</collection>
+		
+	</resultMap>
+
+  	<select id="boardSelect" parameterType="com.cyh.b1.board.NoticeVO" resultMap="selectResult">
+  		select N.*, F.* from notice N full join noticeFiles F
+  		on N.num = F.num
+  		where N.num = #{num}
+  	</select>
+  	
+  	<select id="boardCount" parameterType="com.cyh.b1.util.Pager" resultType="java.lang.Integer">
+  		select count(num) from notice
+  	</select>
+  
+  	<select id="boardList" parameterType="com.cyh.b1.util.Pager" resultType="com.cyh.b1.board.NoticeVO">
+  		select * from notice
+  		where num> 0
+  		order by num desc limit #{startRow}, #{perPage}
+  	</select>
+  	<!-- 공지글쓰기  --> 
+  	<insert id="boardWrite" parameterType="com.cyh.b1.board.NoticeVO" useGeneratedKeys="true" keyProperty="num">
+  		insert into notice values(#{num}, #{title}, #{writer}, #{contents}, now(), 0)
+  	</insert>
+  
+  	
+  
+  
+  </mapper>
